@@ -21,7 +21,10 @@ const auth = async (ctx) => {
 					expiresIn: '1h',
 				}
 			);
-			return response(ctx, 200, { token });
+			return response(ctx, 200, {
+				mensagem: 'Usuario logado com sucesso!',
+				token: token,
+			});
 		}
 	}
 	return response(ctx, 200, { mensagem: 'Email ou senha incorreto' });
