@@ -4,24 +4,24 @@ const usuarioCadastrado = async (email = null) => {
 	if (!email) {
 		return null;
 	}
-	const queryUsuario = `SELECT * from users WHERE email = $1`;
-	const resultUsuario = await database.query({
-		text: queryUsuario,
+	const query = `SELECT * from users WHERE email = $1`;
+	const result = await database.query({
+		text: query,
 		values: [email],
 	});
-	return resultUsuario.rows;
+	return result.rows;
 };
 
 const clienteCadastrado = async (cpf = null) => {
 	if (!cpf) {
 		return null;
 	}
-	const queryCliente = `SELECT * FROM customers WHERE cpf = $1`;
-	const resultCliente = await database.query({
-		text: queryCliente,
+	const query = `SELECT * FROM customers WHERE cpf = $1`;
+	const result = await database.query({
+		text: query,
 		values: [cpf],
 	});
-	return resultCliente.rows;
+	return result.rows;
 };
 
 module.exports = { usuarioCadastrado, clienteCadastrado };

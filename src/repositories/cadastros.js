@@ -8,13 +8,13 @@ const criarUsuario = async (
 	if ((!email, !senha, !nomeDoUsuario)) {
 		return null;
 	}
-	const queryUsuario = `INSERT INTO users (email, senha, nome) VALUES ($1, $2, $3) RETURNING id`;
+	const query = `INSERT INTO users (email, senha, nome) VALUES ($1, $2, $3) RETURNING id`;
 
-	const resultUsuario = await database.query({
-		text: queryUsuario,
+	const result = await database.query({
+		text: query,
 		values: [email, senha, nomeDoUsuario],
 	});
-	return resultUsuario.rows;
+	return result.rows;
 };
 const criarClientes = async (
 	nome = null,
@@ -25,12 +25,12 @@ const criarClientes = async (
 	if (!nome || !cpf || !email || !telefone) {
 		return null;
 	}
-	const queryCliente = `INSERT INTO customers (nome, cpf, email, telefone) VALUES ($1, $2, $3, $4) RETURNING id`;
-	const resultCliente = await database.query({
-		text: queryCliente,
+	const query = `INSERT INTO customers (nome, cpf, email, telefone) VALUES ($1, $2, $3, $4) RETURNING id`;
+	const result = await database.query({
+		text: query,
 		values: [nome, cpf, email, telefone],
 	});
-	return resultCliente.rows;
+	return result.rows;
 };
 
 module.exports = { criarUsuario, criarClientes };
